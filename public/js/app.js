@@ -48476,8 +48476,8 @@ var staticRenderFns = [
                     attrs: {
                       src: "/gull/dist-assets/images/logo.png",
                       alt: "Paris",
-                      width: "80",
-                      height: "100"
+                      width: "400",
+                      height: "300"
                     }
                   }),
                   _vm._v(" "),
@@ -48493,8 +48493,8 @@ var staticRenderFns = [
                     attrs: {
                       src: "/gull/dist-assets/images/logo.png",
                       alt: "New York",
-                      width: "80",
-                      height: "100"
+                      width: "400",
+                      height: "300"
                     }
                   }),
                   _vm._v(" "),
@@ -48510,8 +48510,8 @@ var staticRenderFns = [
                     attrs: {
                       src: "/gull/dist-assets/images/logo.png",
                       alt: "San Francisco",
-                      width: "80",
-                      height: "100"
+                      width: "400",
+                      height: "300"
                     }
                   }),
                   _vm._v(" "),

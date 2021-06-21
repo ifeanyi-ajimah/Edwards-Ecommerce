@@ -146,21 +146,21 @@
   <div class="row text-center slideanim">
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="/gull/dist-assets/images/logo.png" alt="Paris" width="80" height="100">
+        <img src="/gull/dist-assets/images/logo.png" alt="Paris" width="400" height="300">
         <p><strong>Paris</strong></p>
         <p>Yes, we built Paris</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="/gull/dist-assets/images/logo.png" alt="New York" width="80" height="100">
+        <img src="/gull/dist-assets/images/logo.png" alt="New York" width="400" height="300">
         <p><strong>New York</strong></p>
         <p>We built New York</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="/gull/dist-assets/images/logo.png" alt="San Francisco" width="80" height="100">
+        <img src="/gull/dist-assets/images/logo.png" alt="San Francisco" width="400" height="300">
         <p><strong>San Francisco22 </strong></p>
         <p>Yes, San Fran is ours</p>
       </div>
