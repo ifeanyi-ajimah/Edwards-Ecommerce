@@ -48195,79 +48195,116 @@ var staticRenderFns = [
         }
       },
       [
-        _c("nav", { staticClass: "navbar navbar-default navbar-fixed-top" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "navbar-header" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "navbar-toggle",
-                  attrs: {
-                    type: "button",
-                    "data-toggle": "collapse",
-                    "data-target": "#myNavbar"
-                  }
-                },
-                [
-                  _c("span", { staticClass: "icon-bar" }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "icon-bar" }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "icon-bar" })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                { staticClass: "navbar-brand", attrs: { href: "#myPage" } },
-                [_vm._v("Logo")]
-              )
+        _c(
+          "nav",
+          { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" },
+          [
+            _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+              _vm._v("Navbar")
             ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "navbar-toggler",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "collapse",
+                  "data-target": "#navbarNavDropdown",
+                  "aria-controls": "navbarNavDropdown",
+                  "aria-expanded": "false",
+                  "aria-label": "Toggle navigation"
+                }
+              },
+              [_c("span", { staticClass: "navbar-toggler-icon" })]
+            ),
             _vm._v(" "),
             _c(
               "div",
               {
                 staticClass: "collapse navbar-collapse",
-                attrs: { id: "myNavbar" }
+                attrs: { id: "navbarNavDropdown" }
               },
               [
-                _c(
-                  "ul",
-                  { staticClass: "nav navbar-nav d-flex navbar-right" },
-                  [
-                    _c("li", [
-                      _c("a", { attrs: { href: "#about" } }, [_vm._v("ABOUT")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#services" } }, [
-                        _vm._v("SERVICES")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#portfolio" } }, [
-                        _vm._v("PORTFOLIO")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#pricing" } }, [
-                        _vm._v("PRICING")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#contact" } }, [
-                        _vm._v("CONTACT")
+                _c("ul", { staticClass: "navbar-nav" }, [
+                  _c("li", { staticClass: "nav-item active" }, [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v("Home "),
+                      _c("span", { staticClass: "sr-only" }, [
+                        _vm._v("(current)")
                       ])
                     ])
-                  ]
-                )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v("Features")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v("Pricing")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "nav-item dropdown" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link dropdown-toggle",
+                        attrs: {
+                          href: "#",
+                          id: "navbarDropdownMenuLink",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [_vm._v("\r\n          Dropdown link\r\n        ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "dropdown-menu",
+                        attrs: { "aria-labelledby": "navbarDropdownMenuLink" }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Action")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Another action")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Something else here")]
+                        )
+                      ]
+                    )
+                  ])
+                ])
               ]
             )
-          ])
-        ]),
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "jumbotron text-center" }, [
           _c("h1", [_vm._v("Company")]),
@@ -48437,10 +48474,10 @@ var staticRenderFns = [
                 _c("div", { staticClass: "thumbnail" }, [
                   _c("img", {
                     attrs: {
-                      src: "paris.jpg",
+                      src: "/gull/dist-assets/images/logo.png",
                       alt: "Paris",
-                      width: "400",
-                      height: "300"
+                      width: "80",
+                      height: "100"
                     }
                   }),
                   _vm._v(" "),
@@ -48454,10 +48491,10 @@ var staticRenderFns = [
                 _c("div", { staticClass: "thumbnail" }, [
                   _c("img", {
                     attrs: {
-                      src: "newyork.jpg",
+                      src: "/gull/dist-assets/images/logo.png",
                       alt: "New York",
-                      width: "400",
-                      height: "300"
+                      width: "80",
+                      height: "100"
                     }
                   }),
                   _vm._v(" "),
@@ -48471,10 +48508,10 @@ var staticRenderFns = [
                 _c("div", { staticClass: "thumbnail" }, [
                   _c("img", {
                     attrs: {
-                      src: "newyork.jpg",
+                      src: "/gull/dist-assets/images/logo.png",
                       alt: "San Francisco",
-                      width: "400",
-                      height: "300"
+                      width: "80",
+                      height: "100"
                     }
                   }),
                   _vm._v(" "),

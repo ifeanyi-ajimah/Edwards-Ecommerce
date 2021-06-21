@@ -3,7 +3,7 @@
 <!-- <body   id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60"> -->
 <div id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
- <nav class="navbar navbar-default navbar-fixed-top">
+ <!-- <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,9 +23,9 @@
       </ul>
     </div>
   </div>
-</nav> 
+</nav>  -->
 
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -53,7 +53,7 @@
       </li>
     </ul>
   </div>
-</nav> -->
+</nav> 
 
 <div class="jumbotron text-center">
   <h1>Company</h1> 
@@ -146,21 +146,21 @@
   <div class="row text-center slideanim">
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="paris.jpg" alt="Paris" width="400" height="300">
+        <img src="/gull/dist-assets/images/logo.png" alt="Paris" width="80" height="100">
         <p><strong>Paris</strong></p>
         <p>Yes, we built Paris</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="newyork.jpg" alt="New York" width="400" height="300">
+        <img src="/gull/dist-assets/images/logo.png" alt="New York" width="80" height="100">
         <p><strong>New York</strong></p>
         <p>We built New York</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="newyork.jpg" alt="San Francisco" width="400" height="300">
+        <img src="/gull/dist-assets/images/logo.png" alt="San Francisco" width="80" height="100">
         <p><strong>San Francisco22 </strong></p>
         <p>Yes, San Fran is ours</p>
       </div>
