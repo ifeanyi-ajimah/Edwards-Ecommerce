@@ -85,11 +85,15 @@
                    axios.put(`/api/product/update/${this.inputdata.id}`, this.inputdata )
                  .then(response =>{
                      console.log( response )
-                        this.$router.replace('/dashboard/my-products');
-                    //  alert( "Updated");
+                     if(this.$store.state.user.user_type == 'admin'){
+                         this.$router.replace('/dashboard/all-products');
+                     }else{
+                         this.$router.replace('/dashboard/my-products');
+                     }
+                    
                  })
                  .catch(error => {
-                     this.errors = error.response.data.errors
+                    //  this.errors = error.response.data.errors
                  })
             },
             getProduct(){

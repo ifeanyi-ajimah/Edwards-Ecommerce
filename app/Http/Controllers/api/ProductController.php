@@ -108,7 +108,7 @@ class ProductController extends Controller
             'name' => 'required|string|unique:products,name,'.$id,
             'description' => 'required|string',
             'price' => 'required|integer',
-            'image'=>'nullable|mimes:png,jpeg,jpg|max:10000',
+            // 'image'=>'nullable|mimes:png,jpeg,jpg|max:10000',
         ]);
 
         $product = Product::find($id);
@@ -118,20 +118,14 @@ class ProductController extends Controller
         $product->user_id = auth('api')->id();
         $product->update();
 
-        // if($request->image ){
-        //     $imageName = time().$request->image->getClientOriginalName();
-        //     $imageDirPath = '/images/product/';
-        //     $request->image->move('images/product',$imageName);
-        //     $product->image = $imageDirPath . $imageName;
-        //     $product->update();
-        // }
+       
 
-        return AppHttpResponse::responseSuccess(
-            Response::HTTP_CREATED,
-            "product updated successfully",
-            new ProductResource($product)
-        );
-        // return response()->json(['response' => ['status' => 'success', 'message'=> 'Action Successful']]);
+        // return AppHttpResponse::responseSuccess(
+        //     Response::HTTP_CREATED,
+        //     "product updated successfully",
+        //     new ProductResource($product)
+        // );
+        return response()->json(['response' => ['status' => 'success', 'message'=> 'Action Successful']]);
     }
 
     /**

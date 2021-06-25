@@ -2645,10 +2645,12 @@ __webpack_require__.r(__webpack_exports__);
       axios.put("/api/product/update/".concat(this.inputdata.id), this.inputdata).then(function (response) {
         console.log(response);
 
-        _this.$router.replace('/dashboard/my-products'); //  alert( "Updated");
-
-      })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
+        if (_this.$store.state.user.user_type == 'admin') {
+          _this.$router.replace('/dashboard/all-products');
+        } else {
+          _this.$router.replace('/dashboard/my-products');
+        }
+      })["catch"](function (error) {//  this.errors = error.response.data.errors
       });
     },
     getProduct: function getProduct() {
