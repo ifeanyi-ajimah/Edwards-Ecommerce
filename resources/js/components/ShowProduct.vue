@@ -26,7 +26,7 @@
                                 <li class="list-group-item"> Status : {{ product.status ? 'Active' : 'Not Active'}}</li>
                                 <li class="list-group-item"> Created at : {{ product.created_at ? product.created_at : null }}</li>
                                 <li class="list-group-item"> Updated at :  {{ product.updated_at ? product.updated_at : null }} </li>
-                                <li class="list-group-item"> <router-link to="/dashboard/my-products"> <span  class="badge badge-primary"> Return Back</span> </router-link> </li>
+                                <li class="list-group-item"> <a @click.prevent="goBack" class="badge badge-primary text-white">  Return Back  </a> </li>
                                 </ul>
                           
                                 
@@ -59,6 +59,13 @@
                 .catch( error => {
                     console.log( error)
                 });
+            },
+            goBack(){
+                 if(this.$store.state.user.user_type == 'admin'){
+                         this.$router.replace('/dashboard/all-products');
+                     }else{
+                         this.$router.replace('/dashboard/my-products');
+                     }
             }
         
         },

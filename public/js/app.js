@@ -3316,6 +3316,13 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    goBack: function goBack() {
+      if (this.$store.state.user.user_type == 'admin') {
+        this.$router.replace('/dashboard/all-products');
+      } else {
+        this.$router.replace('/dashboard/my-products');
+      }
     }
   },
   mounted: function mounted() {
@@ -43235,22 +43242,21 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "li",
-                    { staticClass: "list-group-item" },
-                    [
-                      _c(
-                        "router-link",
-                        { attrs: { to: "/dashboard/my-products" } },
-                        [
-                          _c("span", { staticClass: "badge badge-primary" }, [
-                            _vm._v(" Return Back")
-                          ])
-                        ]
-                      )
-                    ],
-                    1
-                  )
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "badge badge-primary text-white",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.goBack($event)
+                          }
+                        }
+                      },
+                      [_vm._v("  Return Back  ")]
+                    )
+                  ])
                 ])
               ])
             ])
