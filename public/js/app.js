@@ -3540,7 +3540,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    closeModal: function closeModal() {
+      $('#shopModal').modal('hide');
+      this.$router.replace('checkout');
+    }
+  }
+});
 
 /***/ }),
 
@@ -43757,30 +43764,31 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "modal-footer" },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-secondary",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Continue Shoping ")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { to: "/checkout", type: "button" }
-                      },
-                      [_vm._v(" Checkout ")]
-                    )
-                  ],
-                  1
-                )
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Continue Shoping ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary text-white",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.closeModal($event)
+                        }
+                      }
+                    },
+                    [_vm._v(" Checkout ")]
+                  )
+                ])
               ])
             ]
           )
@@ -44128,7 +44136,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "jumbotron text-center" }, [
       _c("h1", [_vm._v("REISS EDWARDS SHOP ")]),
       _vm._v(" "),
-      _c("p", [_vm._v("We specialize in blablabla")])
+      _c("p", [_vm._v("Immigration Lawyers And Solicitors Shop In London ")])
     ])
   },
   function() {

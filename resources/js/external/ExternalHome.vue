@@ -77,7 +77,7 @@
             </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Shoping </button>
-        <router-link to="/checkout" type="button" class="btn btn-primary"> Checkout </router-link>
+        <a type="button" @click.prevent="closeModal" class="btn btn-primary text-white"> Checkout </a>
       </div>
     </div>
   </div>
@@ -103,6 +103,13 @@
 
 <script>
 export default {
+
+  methods:{
+    closeModal(){
+          $('#shopModal').modal('hide');
+          this.$router.replace('checkout');
+    }
+  }
 
 }
 </script>

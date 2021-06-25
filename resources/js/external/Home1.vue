@@ -2,7 +2,7 @@
 <div>
 <div class="jumbotron text-center">
   <h1>REISS EDWARDS SHOP </h1> 
-  <p>We specialize in blablabla</p> 
+  <p>Immigration Lawyers And Solicitors Shop In London </p> 
  
 </div>
 

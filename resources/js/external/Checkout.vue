@@ -46,6 +46,7 @@ export default {
       const val = new Intl.NumberFormat().format(value);
       return "₦" + val;
     },
+    
 
     }
 }

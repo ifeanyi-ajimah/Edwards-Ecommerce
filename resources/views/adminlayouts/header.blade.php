@@ -6,7 +6,7 @@
     
     <meta name="keyword" content="Shop, Fruit shop, good , clothes ">
 	<meta name="author" content="Reiss Edwards ">
-  <meta name="description" content="the most awesome shop you can ever imagine">
+  <meta name="description" content="The most awesome shop you can ever think of.">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet" />
