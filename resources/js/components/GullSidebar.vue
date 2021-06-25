@@ -18,13 +18,13 @@
                     <li v-if="$store.state.user.user_type == 'customer' " class="nav-item" ><router-link to="/dashboard/customer-orders" class="nav-item-hold" ><i class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">My Orders (customer)</span></router-link>
                         <div class="triangle"></div>
                     </li>
-                    <li v-if="$store.state.user.user_type == 'admin' " class="nav-item" Xdata-item="forms"><a class="nav-item-hold" href="#"><i class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">All Vendors</span></a>
+                    <li v-if="$store.state.user.user_type == 'admin' " class="nav-item" Xdata-item="forms"><router-link to="/dashboard/all-users" class="nav-item-hold" ><i class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">All Users</span></router-link>
                         <div class="triangle"></div>
                     </li>
-                    <li v-if="$store.state.user.user_type == 'admin' " class="nav-item"><a class="nav-item-hold" href="datatables.html"><i class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">All Products </span></a>
+                    <li v-if="$store.state.user.user_type == 'admin' " class="nav-item"><router-link to="/dashboard/all-products" class="nav-item-hold" ><i class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">All Products </span></router-link>
                         <div class="triangle"></div>
                     </li>
-                    <li v-if="$store.state.user.user_type == 'admin' " class="nav-item active" ><a class="nav-item-hold" href="#"><i class="nav-icon i-Double-Tap"></i><span class="nav-text">All Orders </span></a>
+                    <li v-if="$store.state.user.user_type == 'admin' " class="nav-item active" ><router-link to="/dashboard/all-orders" class="nav-item-hold" ><i class="nav-icon i-File-Horizontal-Text"></i><span class="nav-text">All Orders </span></router-link>
                         <div class="triangle"></div>
                     </li>
                    

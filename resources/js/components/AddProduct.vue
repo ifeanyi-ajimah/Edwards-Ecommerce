@@ -4,7 +4,7 @@
                 <div class="breadcrumb">
                     <h1>Product</h1>
                     <ul>
-                        <li><a href="href">add</a></li>
+                       <li><router-link to="/dashboard/home">Home </router-link></li>
                         <li>Add Product </li>
                     </ul>
                 </div>

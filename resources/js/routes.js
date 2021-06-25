@@ -10,6 +10,8 @@ import ShowProduct from './components/ShowProduct.vue'
 import EditProduct from './components/EditProduct.vue'
 import MyOrders from './components/MyOrders.vue'
 import AllProducts from './components/AllProducts.vue'
+import AllUsers from './components/AllUsers.vue'
+import AllOrders from './components/AllOrders.vue'
 import CustomerOrders from './components/CustomerOrders.vue'
 
 
@@ -52,7 +54,9 @@ export const routes = [
             {path: 'product/:product_id', component: ShowProduct },
             {path: 'edit/product/:product_id', component: EditProduct },
             {path: 'my-orders', name: 'myorders', component: MyOrders},
-            {path: 'all-product', name: 'all.product', component: AllProducts},
+            {path: 'all-products', name: 'all.product', component: AllProducts},
+            {path: 'all-users', name: 'all.users', component: AllUsers},
+            {path: 'all-orders', name: 'all.orders', component: AllOrders},
             {path: 'customer-orders', name: 'customer.orders', component: CustomerOrders},
 
 

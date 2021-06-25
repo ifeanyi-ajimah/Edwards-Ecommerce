@@ -4,7 +4,7 @@
                 <div class="breadcrumb">
                     <h1> My Products</h1>
                     <ul>
-                        <li><a href="href">Products</a></li>
+                          <li><router-link to="/dashboard/home">Home </router-link></li>
                         <li>View Product </li>
                     </ul>
                 </div>
@@ -30,7 +30,7 @@
                                          
                                      <span   class="showFile "> <router-link :to="`/dashboard/product/${item.id}`"> <i  class="nav-icon i-Magnifi-Glass-"></i> </router-link>  </span>
                                      <span   class="editFile "> <router-link :to="`/dashboard/edit/product/${item.id}`"> <i class="nav-icon i-Edit"></i> </router-link>  </span>
-                                    <span  @click="deleteItem(item.id)" class="deletefile "> <i class="nav-icon i-Delete-File"></i>  </span>
+                                    <span  @click="deleteItem(index,item.id)" class="deletefile "> <i class="nav-icon i-Delete-File"></i>  </span>
                                      </div>
                                 </li>
                                 
@@ -70,23 +70,25 @@
                 this.pageOfItems = pageOfItems;
             },
 
-            deleteItem(id){
+            deleteItem(index, id){
                 let willdelete = confirm("Want to delete?");
                 if (willdelete) {
                 axios.delete('/api/product/delete/' + id )
                 .then(response => {
                     if(response.status == 200){
-                        this.getProducts();//will be changed
+                        this.getProducts();
+                          this.products.splice(index,1);
                     }
                 })
                 .catch(error => {
                     console.log(error)
                 })
+
                 }
 
             },
             searchQuery1(value){
-                axios.get(`/api/product/search/${value}`)
+                axios.get(`/api/product/myproducts/search/${value}`)
                 .then(response => {
                     console.log( response.data.response.data.length )
                     // if(response.status == 200){
@@ -116,7 +118,6 @@
         watch:{
             searchquery(){
                 if(this.searchquery.length > 0){
-                    
                      this.searchQuery1(this.searchquery);
                 }else{
                     this.getProducts();

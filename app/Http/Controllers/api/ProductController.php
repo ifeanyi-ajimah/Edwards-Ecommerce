@@ -36,6 +36,12 @@ class ProductController extends Controller
          return response()->json(['response' => ['status' => 'success', 'data' => $searched]]);
     }
 
+    public function searchMyProducts($item)
+    {
+         $searched = Product::where('user_id', auth('api')->id() )->where('name', 'like', '%'. $item  . '%' )->get();
+         return response()->json(['response' => ['status' => 'success', 'data' => $searched]]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,7 +55,7 @@ class ProductController extends Controller
             'name' => 'required|string|unique:products',
             'description' => 'required|string',
             'price' => 'required|integer',
-            'image' => 'required|image',
+            'image'=>'nullable|mimes:png,jpeg,jpg|max:10000',
         ]);
 
         $product = new product;
@@ -102,7 +108,7 @@ class ProductController extends Controller
             'name' => 'required|string|unique:products,name,'.$id,
             'description' => 'required|string',
             'price' => 'required|integer',
-            // 'image' => 'required|image',
+            'image'=>'nullable|mimes:png,jpeg,jpg|max:10000',
         ]);
 
         $product = Product::find($id);
