@@ -5,10 +5,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+let cartFromLocalStorage = JSON.parse(window.localStorage.getItem('cart')) ;
 
 const store = new Vuex.Store({
     state:{
-            test:{ word : "Sign In", place : "9ja"},
+           cart: cartFromLocalStorage ? cartFromLocalStorage : [] ,
+           //sigin
             status: '',
             loginError : '',
             token: localStorage.getItem('access_token') || '',
@@ -22,6 +24,15 @@ const store = new Vuex.Store({
                     return state.token ? 1 : 0
                   },
                 authStatus: state => state.status,
+
+                cartTotal: (state) => {
+                  let sum = 0 ;
+                  state.cart.forEach( (item) =>{
+                   sum += ( item.price * item.productQty)
+                  });
+                  return sum;
+                }, 
+            
                 },
 
             mutations:{
@@ -51,7 +62,30 @@ const store = new Vuex.Store({
                     state.user = ''
                     state.currentUser = ''
                     state.token = ''
-                }
+                },
+                //cart 
+                addtocart(state, item){
+                  let found = state.cart.find( product => 
+                    product.id  == item.id
+                  );
+                  if( found ){
+                    found.productQty++;
+                  }else{
+                  item.productQty = 1
+                  state.cart.push(item);
+                  }
+                  this.commit('savePersistentData'); // call the savePersistentData function 
+                },
+                savePersistentData(state){
+                  window.localStorage.setItem('cart', JSON.stringify(state.cart) );
+                },
+            
+                removeFromCart(state, item){
+                  let index = state.cart.indexOf(item);
+                  state.cart.splice(index, 1);
+                  this.commit('savePersistentData'); // call the savePersistentData function 
+                }, 
+            
         
             },
             actions : {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegionImagesTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateRegionImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('region_images', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('region_id');
             $table->string('name');
+            $table->integer('user_id');
+            $table->text('description');
+            $table->boolean('status')->default(true);
+            $table->string('image')->nullable();
+            $table->decimal('price', $precision = 8, $scale = 2);
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateRegionImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('region_images');
+        Schema::dropIfExists('products');
     }
 }

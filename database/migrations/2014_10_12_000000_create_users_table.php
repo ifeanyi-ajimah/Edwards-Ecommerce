@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone');
+            $table->enum('user_type',['admin','vendor','customer']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -27,6 +29,8 @@ class CreateUsersTable extends Migration
             array(
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
+                'phone' => '09048848484',
+                'user_type' => 'admin',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
                 'email_verified_at' => date_create('now')->format('Y-m-d H:i:s'),
                 'created_at' => date_create('now')->format('Y-m-d H:i:s'),
@@ -38,6 +42,8 @@ class CreateUsersTable extends Migration
             array(
                 'name' => 'Admin 2',
                 'email' => 'admin@qrcode.com',
+                'phone' => '09048848484',
+                'user_type' => 'admin',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
                 'email_verified_at' => date_create('now')->format('Y-m-d H:i:s'),
                 'created_at' => date_create('now')->format('Y-m-d H:i:s'),

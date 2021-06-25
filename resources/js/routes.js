@@ -1,50 +1,65 @@
 import Adminhome from './components/AdminHome.vue'
-import External from './external/External.vue'
+
 import Adminhomemain from './components/AdminHomeMain.vue'
-import Todo from './components/TodoList.vue'
-import ShowTodo from './components/todofolder/ShowTodo.vue'
-import EditTodo from './components/todofolder/EditTodo.vue'
-import MultiImage from './components/MultiImage.vue'
-import Login from './external/Login.vue'
-import Register from './external/Register.vue'
-import FatherComponent from './components/slots/FatherComponent.vue'
-import WatcherComponent from './components/watcher/Watch.vue'
-
-import Shop from './external/ShopHome.vue'
 
 
+
+import AddProduct from './components/AddProduct.vue'
+import MyProducts from './components/MyProducts.vue'
+import ShowProduct from './components/ShowProduct.vue'
+import EditProduct from './components/EditProduct.vue'
+import MyOrders from './components/MyOrders.vue'
+import AllProducts from './components/AllProducts.vue'
+import CustomerOrders from './components/CustomerOrders.vue'
+
+
+
+import External from './external/ExternalHome.vue'
+import Home1 from './external/Home1.vue'
+import Shop from './external/Shop.vue'
+import Contact from './external/Contact.vue'
+import VendorSignUp from './external/VendorSignUp.vue'
+import UserSignUp from './external/UserSignUp.vue'
+import GeneralLogin from './external/GeneralLogin.vue'
+import Checkout from './external/Checkout.vue'
 
 export const routes = [
     
     {
     path: '/',   component: External,
     children:[
-        {path: '', name : 'home', component: Login },
-        {path: 'login', name: 'login', component: Login},
-        {path: 'admin', name: 'adminlogin', component: Login},
-        {path: 'register', name: 'register', component: Register},
-        {path: 'shophome', name: 'shophome', component: Shop},
+        {path: '', name : 'home', component: Home1 },
+        {path: 'shop', name: 'shop', component: Shop},
+        {path: 'contact', name: 'contact', component: Contact},
+        {path: 'vendor-signup', name: 'vendorsignup', component: VendorSignUp},
+        {path: 'user-signup', name: 'usersignup', component: UserSignUp},
+        {path: 'login', name: 'login', component: GeneralLogin},
+        {path: 'checkout', name: 'checkout', component: Checkout},
+
     ]
     },
 
     {
-        path: '/admin', name: 'admin', component : Adminhome,
+        path: '/dashboard', name: 'dashboard', component : Adminhome,
         meta:{
             requiresAuth: true
         },
         children:[
-            //  {path: '/', name : 'adminlogin', component: Login },
-            {path: 'home', name: 'adminhome', component: Adminhomemain},
-            {path: 'multiimage', name: 'admin.multiimage', component: MultiImage},
-            {path: 'todo', name: 'todo', component: Todo},
-            {path: 'todo/:todo_id', component: ShowTodo },
-            {path: 'edit/todo/:todo_id', component: EditTodo },
-            {path: 'father-slot', name:'father.slot', component: FatherComponent },
-            {path: 'watcher', name:'watcher', component: WatcherComponent }
+            {path: 'home', name: 'dashboardhome', component: Adminhomemain},
+
+            {path: 'add-product', name: 'add.product', component: AddProduct},
+            {path: 'my-products', name: 'my.products', component: MyProducts},
+            {path: 'product/:product_id', component: ShowProduct },
+            {path: 'edit/product/:product_id', component: EditProduct },
+            {path: 'my-orders', name: 'myorders', component: MyOrders},
+            {path: 'all-product', name: 'all.product', component: AllProducts},
+            {path: 'customer-orders', name: 'customer.orders', component: CustomerOrders},
+
 
         ],
        
-    }
+    },
+    
    
 
 ];

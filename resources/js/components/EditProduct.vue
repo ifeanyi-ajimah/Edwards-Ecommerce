@@ -2,10 +2,10 @@
      <div class="main-content-wrap sidenav-open d-flex flex-column">
     <div class="main-content">
                 <div class="breadcrumb">
-                    <h1>Layouts</h1>
+                    <h1>Product</h1>
                     <ul>
-                        <li><a href="href">Forms</a></li>
-                        <li>Form Layouts</li>
+                        <li><a href="href"></a></li>
+                        <li>Edit Product </li>
                     </ul>
                 </div>
                 <div class="separator-breadcrumb border-top"></div>
@@ -13,7 +13,7 @@
             
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <h4> Region Form . test single and multi image upload. </h4>
+                        <h4> Edit Product Page </h4>
                         <p> </p>
                         <div class="card mb-5">
                             <div class="card-body">
@@ -22,7 +22,7 @@
                                     <form  >
                                     <div class="form-group">
                                         <label for=""> Name </label>
-                                        <input class="form-control" :class="{'is-danger':errors.name}" required v-model="inputdata.name" type="text" placeholder="Enter region name" />
+                                        <input class="form-control" :class="{'is-danger':errors.name}" required v-model="inputdata.name" type="text" placeholder="Enter product name" />
                                         <small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>
                                     </div>
                                     <div class="form-group">
@@ -31,14 +31,16 @@
                                         <small v-if="errors.description" class="has-text-danger">{{ errors.description[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <label for=""> single file upload</label>
-                                        <input class="form-control" :class="{'is-danger': errors.image}" required @change="singleFile" type="file"  />
+                                        <label for=""> Price </label>
+                                        <input class="form-control" :class="{'is-danger': errors.price}" required v-model="inputdata.price" type="number" placeholder="Enter price" />
+                                        <small v-if="errors.price" class="has-text-danger">{{ errors.price[0] }}</small>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for=""> image upload</label>
+                                        <input class="form-control" :class="{'is-danger': errors.image}" required @change="uploadFile" type="file"  />
                                         <small v-if="errors.image" class="has-text-danger">{{ errors.image[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for=""> multiple file upload</label>
-                                        <input class="form-control" required @change="multipleFiles" multiple type="file"  />
-                                    </div>
+                                    </div> -->
+                                  
                                     <button type="submit" @click.prevent="submitForm" class="btn btn-primary pd-x-20"> Submit </button>
                                     </form>
                                 </div>
@@ -58,62 +60,51 @@
         data(){
            return{
              attachment : '',
-             multiAttachment: [],
+             
              form : new FormData,
             inputdata:{
                 name : '',
                 description : ' ',
+                price : ' ',
             },
             errors: {},
-
            }
 
         },
         methods:{
-            singleFile(e){
+            uploadFile(e){
                 let selectedFile = e.target.files[0];
                 this.attachment = selectedFile
             }, 
-            multipleFiles(e){
-                let multiFile = e.target.files;
-                if( !multiFile.length){
-                    return false;
-                }
-                for( let i = 0; i< multiFile.length; i ++  ){
-                    this.multiAttachment.push( multiFile[i]);
-                }
-                console.log( this.multiAttachment);
-
-            },
-            submitForm(){
-                 this.form.append('image', this.attachment);
-
-                 for( let i = 0; i< this.multiAttachment.length; i++){
-                    this.form.append('images[]', this.multiAttachment[i]);
-                 }
-                 this.form.append('name', this.inputdata.name)
-                 this.form.append('description', this.inputdata.description)
-
-                 const config = { headers: {'Content-Type' : 'multipart/form-data'}};
-                 axios.post('/api/user/region', this.form, config )
-                 .then(response =>{
-                     console.log( response.data )
-                     this.inputdata = ' '
-                     this.attachment = ' '
-                     this.multiAttachment = ''
-                     this.errors = ' '
-                     alert( " Submited");
             
+            submitForm(){
+        
+                 const config = { headers: {'Content-Type' : 'multipart/form-data'}};
+                
+                   axios.put(`/api/product/update/${this.inputdata.id}`, this.inputdata )
+                 .then(response =>{
+                     console.log( response )
+                        this.$router.replace('/dashboard/my-products');
+                    //  alert( "Updated");
                  })
                  .catch(error => {
                      this.errors = error.response.data.errors
                  })
             },
+            getProduct(){
+                axios.get(`/api/product/show/${this.$route.params.product_id}`)
+                .then(response => {
+                     this.inputdata = response.data.response.product
+                })
+                .catch( error => {
+                    console.log( error)
+                });
+            },
 
         },
 
         mounted() {
-            console.log('Component mounted.')
+            this.getProduct();
         }
     }
 </script>

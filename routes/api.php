@@ -37,6 +37,24 @@ Route::group([ 'middleware' => 'auth:api', 'prefix' => '/todo'], function ($rout
     Route::get('/search/{item}', 'api\TodoController@search');
 
 });
+Route::get('/products','api\ProductController@index');
+
+Route::group([ 'middleware' => 'auth:api', 'prefix' => '/product'], function ($router) {
+    Route::get('/products','api\ProductController@index');
+    Route::get('/myproducts','api\ProductController@myproducts');
+    Route::get('/show/{id}','api\ProductController@show');
+    Route::post('/store', 'api\ProductController@store');
+    Route::put('/update/{id}','api\ProductController@update');
+    Route::get('/search/{item}', 'api\ProductController@search');
+    Route::delete('/delete/{id}','api\ProductController@destroy');
+    Route::get('/search/{item}', 'api\ProductController@search');
+
+});
+
+
+
+
+
 // Route::group(['middleware' => 'auth:api'], function($router) {
 //     Route::get('/authenticated', function(){
 //         if(auth()->user() ){
@@ -51,6 +69,7 @@ Route::group([ 'middleware' => 'auth:api', 'prefix' => '/todo'], function ($rout
 
 Route::prefix('/user')->group( function(){
     Route::post('/login','api\LoginController@login');
+    Route::post('/new/signup','api\RegisterController@storeUser');
 
 });
 

@@ -152,8 +152,8 @@
                             <div class="dropdown-header">
                                 <i class="i-Lock-User mr-1"></i>   {{ $store.state.user.name }}
                             </div>
-                            <a class="dropdown-item">Account settings</a>
-                            <a class="dropdown-item">Billing history</a>
+                            <!-- <a class="dropdown-item">Account settings</a> -->
+                            <a class="dropdown-item"> {{ $store.state.user.user_type }} </a>
                             <a class="dropdown-item" @click.prevent="logout1" href="#">Sign out</a>
                         </div>
                     </div>

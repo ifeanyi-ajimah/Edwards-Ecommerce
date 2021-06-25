@@ -5,7 +5,7 @@
             <div class="app-footer">
                 <div class="row">
                     <div class="col-md-9">
-                        <p><strong>Gull - Laravel + Bootstrap 4 admin template</strong></p>
+                        <p><strong> A Great Template </strong></p>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero quis beatae officia saepe perferendis voluptatum minima eveniet voluptates dolorum, temporibus nisi maxime nesciunt totam repudiandae commodi sequi dolor quibusdam
                      
                         </p>

@@ -26,7 +26,6 @@
         created() {
            axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token")
           this.$store.dispatch('getcurrentuser')
-        
         },
         computed:{
             currenUser:{
