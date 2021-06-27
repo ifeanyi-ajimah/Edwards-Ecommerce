@@ -2232,13 +2232,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'adminHomeMain',
   data: function data() {
     return {
       name: '',
       errors: {},
-      dataSaved: null
+      dataSaved: false
     };
   },
   mounted: function mounted() {
@@ -2260,19 +2261,20 @@ __webpack_require__.r(__webpack_exports__);
     completeTransaction: function completeTransaction() {
       var _this2 = this;
 
-      if (this.dataSaved === null) {
+      if (this.dataSaved === false) {
         var cartItems = this.$store.state.cart;
         cartItems.forEach(function (element) {
-          // console.log(element);
           axios.post('/api/order/store', element).then(function (response) {
+            _this2.dataSaved = true;
             console.log(response.data.data);
           })["catch"](function (error) {
             _this2.errors = error.response.data.errors;
           });
         });
-        this.dataSaved += 1;
+        this.dataSaved = true;
       }
 
+      this.dataSaved = true;
       this.payWithPaystack();
     },
     payWithPaystack: function payWithPaystack() {
@@ -2313,6 +2315,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3117,6 +3121,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -41160,6 +41166,14 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
+                        _c("h5", { staticClass: "heading" }, [
+                          _vm._v(
+                            " Role : " +
+                              _vm._s(_vm.$store.state.user.user_type) +
+                              "  "
+                          )
+                        ]),
+                        _vm._v(" "),
                         _c("div", { staticClass: "ul-widget__chart-number" })
                       ]),
                       _vm._v(" "),
@@ -41421,6 +41435,10 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(" " + _vm._s(order.user.name) + " ")]),
                         _vm._v(" "),
+                        _c("td", [
+                          _vm._v(" " + _vm._s(order.user.phone) + " ")
+                        ]),
+                        _vm._v(" "),
                         _c("td", [_vm._v(" " + _vm._s(order.order_id) + " ")]),
                         _vm._v(" "),
                         _c("td", [_vm._v(" " + _vm._s(order.quantity) + " ")]),
@@ -41455,6 +41473,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Vendor")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Customer Name ")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Customer Phone ")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Order id ")]),
         _vm._v(" "),
@@ -42252,7 +42272,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("a", { staticClass: "dropdown-item" }, [
                   _vm._v(
-                    " " + _vm._s(_vm.$store.state.user.user_type) + "(role) "
+                    "Role: " + _vm._s(_vm.$store.state.user.user_type) + " "
                   )
                 ]),
                 _vm._v(" "),
@@ -43035,6 +43055,10 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(" " + _vm._s(order.user.name) + " ")]),
                         _vm._v(" "),
+                        _c("td", [
+                          _vm._v(" " + _vm._s(order.user.phone) + " ")
+                        ]),
+                        _vm._v(" "),
                         _c("td", [_vm._v(" " + _vm._s(order.order_id) + " ")]),
                         _vm._v(" "),
                         _c("td", [_vm._v(" " + _vm._s(order.quantity) + " ")]),
@@ -43069,6 +43093,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Vendor")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Customer Name ")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Customer Phone ")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Order id ")]),
         _vm._v(" "),

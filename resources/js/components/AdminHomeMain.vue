@@ -70,6 +70,7 @@
                             <div class="card-body ul-card__widget-chart">
                                 <div class="ul-widget__chart-info">
                                     <h5 class="heading"> Name : {{ $store.state.user.name }}  </h5>
+                                    <h5 class="heading"> Role : {{ $store.state.user.user_type }}  </h5>
                                     <div class="ul-widget__chart-number">
                                         <!-- <h2 class="t-font-boldest">$1000</h2><small class="text-muted">46% compared to last year</small> -->
                                     </div>
@@ -162,7 +163,7 @@
             return{
                 name: '',
                 errors: {},
-                dataSaved: null,
+                dataSaved : false,
             }
         },
         
@@ -182,20 +183,23 @@
                 },
 
             completeTransaction(){
-                if(this.dataSaved === null ){
+                if(this.dataSaved === false ){
+
                     let cartItems = this.$store.state.cart 
                        cartItems.forEach(element => {
-                        // console.log(element);
+                        
                         axios.post('/api/order/store', element )
                         .then((response) =>{
+                            this.dataSaved = true;
                             console.log( response.data.data )
                         })
                         .catch(error => {
                             this.errors = error.response.data.errors
                         })
-                    });
-                     this.dataSaved += 1;
+                    })
+                     this.dataSaved = true;
                 }
+                this.dataSaved = true;
                 this.payWithPaystack();
             },
 

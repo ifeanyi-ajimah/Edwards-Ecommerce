@@ -21,6 +21,7 @@
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Vendor</th>
                                 <th scope="col">Customer Name </th>
+                                <th scope="col">Customer Phone </th>
                                 <th scope="col">Order id </th>
                                 <th scope="col">Quantity </th>
                                 <th scope="col">Request Date  </th>
@@ -34,6 +35,7 @@
                                 <td> {{ order.product.name }} </td>
                                 <td> {{ order.vendor_name }} </td>
                                 <td> {{ order.user.name }} </td>
+                                <td> {{ order.user.phone }} </td>
                                 <td> {{ order.order_id }} </td>
                                 <td> {{ order.quantity }} </td>
                                 <td> {{ order.created_at }} </td>
