@@ -22,14 +22,14 @@
                                 <li class="list-group-item" > <img class="img-circle" :src="product.image" width="300px"  alt=""> </li>
                                 <li class="list-group-item"> Name : {{product.name}}</li>
                                 <li class="list-group-item"> Detail : {{product.description}}</li>
+                                <li class="list-group-item"> Vendor : {{product.user.name}}</li>
                                 <li class="list-group-item"> Price : {{product.price}}</li>
                                 <li class="list-group-item"> Status : {{ product.status ? 'Active' : 'Not Active'}}</li>
                                 <li class="list-group-item"> Created at : {{ product.created_at ? product.created_at : null }}</li>
                                 <li class="list-group-item"> Updated at :  {{ product.updated_at ? product.updated_at : null }} </li>
                                 <li class="list-group-item"> <a @click.prevent="goBack" class="badge badge-primary text-white">  Return Back  </a> </li>
                                 </ul>
-                          
-                                
+        
                             </div>
                         </div>
                     </div>
@@ -53,8 +53,8 @@
                 axios.get(`/api/product/show/${this.$route.params.product_id}`)
                 .then(response => {
                     
-                    console.log(response.data.response.product )
-                     this.product = response.data.response.product
+                    // console.log(response.data.data )
+                     this.product = response.data.data
                 })
                 .catch( error => {
                     console.log( error)

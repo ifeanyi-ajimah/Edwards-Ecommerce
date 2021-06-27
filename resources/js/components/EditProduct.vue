@@ -80,7 +80,7 @@
             
             submitForm(){
         
-                 const config = { headers: {'Content-Type' : 'multipart/form-data'}};
+                //  const config = { headers: {'Content-Type' : 'multipart/form-data'}};
                 
                    axios.put(`/api/product/update/${this.inputdata.id}`, this.inputdata )
                  .then(response =>{
@@ -99,7 +99,7 @@
             getProduct(){
                 axios.get(`/api/product/show/${this.$route.params.product_id}`)
                 .then(response => {
-                     this.inputdata = response.data.response.product
+                     this.inputdata = response.data.data
                 })
                 .catch( error => {
                     console.log( error)

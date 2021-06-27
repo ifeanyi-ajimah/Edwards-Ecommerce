@@ -9,6 +9,7 @@ use App\Http\Resources\ProductResource;
 use Illuminate\Support\Facades\Validator;
 use App\Models\AppHttpResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -20,26 +21,29 @@ class ProductController extends Controller
     public function index()
     {
         $products =  Product::orderBy('created_at','DESC')->get();
-         return response()->json(['response' => ['status' => 'success', 'products' => $products ]]);
+        return ProductResource::collection( $products );
+        //  return response()->json(['response' => ['status' => 'success', 'products' => $products ]]);
     }
 
     public function myproducts()
     {
         $products =  Product::where('user_id', auth('api')->id() )->orderBy('created_at','DESC')->get();
-         return response()->json(['response' => ['status' => 'success', 'products' => $products ]]);
+        return ProductResource::collection( $products );
     }
 
    
     public function search($item)
     {
          $searched = Product::where('name', 'like', '%'. $item  . '%' )->get();
-         return response()->json(['response' => ['status' => 'success', 'data' => $searched]]);
+         return ProductResource::collection( $searched );
+
     }
 
     public function searchMyProducts($item)
     {
          $searched = Product::where('user_id', auth('api')->id() )->where('name', 'like', '%'. $item  . '%' )->get();
-         return response()->json(['response' => ['status' => 'success', 'data' => $searched]]);
+         return ProductResource::collection( $searched );
+        //  return response()->json(['response' => ['status' => 'success', 'data' => $searched]]);
     }
 
     /**
@@ -78,7 +82,6 @@ class ProductController extends Controller
             "product created successfully",
             new ProductResource($product)
         );
-        // return response()->json(['response' => ['status' => 'success', 'message'=> 'Action Successful']]);
     }
 
     /**
@@ -90,7 +93,18 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return response()->json(['response'=> ['status'=> 'Success', 'product' => $product ]]);
+        if( $product == null )
+        {
+            return AppHttpResponse::notFound();
+        }
+
+        return AppHttpResponse::responseSuccess(
+            Response::HTTP_OK,
+            "successfully retrieved resource",
+            new ProductResource($product)
+        );
+
+        // return response()->json(['response'=> ['status'=> 'Success', 'product' => $product ]]);
     }
 
     /**
@@ -118,14 +132,12 @@ class ProductController extends Controller
         $product->user_id = auth('api')->id();
         $product->update();
 
-       
-
-        // return AppHttpResponse::responseSuccess(
-        //     Response::HTTP_CREATED,
-        //     "product updated successfully",
-        //     new ProductResource($product)
-        // );
-        return response()->json(['response' => ['status' => 'success', 'message'=> 'Action Successful']]);
+        return AppHttpResponse::responseSuccess(
+                Response::HTTP_CREATED,
+                "product updated successfully",
+                new ProductResource($product)
+            );
+            // return response()->json(['response' => ['status' => 'success', 'message'=> 'Action Successful']]);
     }
 
     /**
@@ -137,6 +149,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+
+        $imagePath = public_path($product->image);
+        if(File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
         $product->delete();
         return response()->json(['response' => ['status' => 'success']]);
     }

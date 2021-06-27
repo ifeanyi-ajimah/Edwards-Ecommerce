@@ -13,9 +13,11 @@
         <span class="mx-4">{{  toNaira(product.price) }} </span>
         </div>
         <div class="d-flex justify-content-between ">
-         <span class="ml-4 mt-4"> {{ product.description.substring(0,8)+".." }} </span>
+         <span class="ml-4 mt-4"> vendor: {{ product.user.name }} </span>
          <span class="mx-4 mt-4"> <button class="btn btn-sm" @click.prevent="addToCart(product)"> AddToCart </button></span>
         </div>
+          <small class="ml-4 mt-8">  Description : {{ product.description.substring(0,30)+".." }} </small>
+
       </div>-
     </div>
 
@@ -41,14 +43,13 @@ export default {
   methods:{
       addToCart(product){
             $('#shopModal').modal('show');
-            // console.log(product);
           this.$store.commit('addtocart', product);
       },
       getProducts(){
           axios.get('/api/products')
           .then(response => {
-              console.log(response.data.response.products)
-              this.products = response.data.response.products
+              console.log(response.data.data)
+              this.products = response.data.data
           })
           .catch(error => {
               console.log(error)

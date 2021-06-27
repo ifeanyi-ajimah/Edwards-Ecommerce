@@ -20,6 +20,15 @@ class User extends Authenticatable
         'name', 'email','phone','user_type','password',
     ];
 
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

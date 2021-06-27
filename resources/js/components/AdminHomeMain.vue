@@ -139,7 +139,7 @@
                   <span class="mb-5"> Total Price </span> <br>
                   <span> {{  toNaira( $store.getters.cartTotal ) }} </span>
                   <br>
-                  <button class="btn btn-primary my-3"> click to pay </button>
+                  <button @click.prevent="completeTransaction" class="btn btn-primary my-3"> click to pay </button>
               </div>
           </div>
    
@@ -160,25 +160,76 @@
 
         data(){
             return{
-                name: ''
+                name: '',
+                errors: {},
+                dataSaved: null,
             }
         },
-
+        
         mounted() {
           this.getUser();
         },
         methods:{
-            getUser(){
-                axios.get('/api/user').then( response => {
-                console.log( response )
-                this.name = response.data.email
-            });
-            },
+                getUser(){
+                    axios.get('/api/user').then( response => {
+                    console.log( response )
+                    this.name = response.data.email
+                });
+                },
               toNaira(value) {
-      const val = new Intl.NumberFormat().format(value);
-      return "₦" + val;
-    },
+                const val = new Intl.NumberFormat().format(value);
+                return "₦" + val;
+                },
+
+            completeTransaction(){
+                if(this.dataSaved === null ){
+                    let cartItems = this.$store.state.cart 
+                       cartItems.forEach(element => {
+                        // console.log(element);
+                        axios.post('/api/order/store', element )
+                        .then((response) =>{
+                            console.log( response.data.data )
+                        })
+                        .catch(error => {
+                            this.errors = error.response.data.errors
+                        })
+                    });
+                     this.dataSaved += 1;
+                }
+                this.payWithPaystack();
+            },
+
+    payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'pk_test_86d32aa1nV4l1da7120ce530f0b221c3cb97cbcc',
+      email: this.$store.state.user.email,
+      amount: this.$store.getters.cartTotal,
+      currency: "NGN",
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Mobile Number",
+                variable_name: "mobile_number",
+                value: this.$store.state.user.phone
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+            
+            
+      
 
         }
     }
 </script>
+
+

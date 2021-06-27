@@ -90,10 +90,10 @@
             searchQuery1(value){
                 axios.get(`/api/product/myproducts/search/${value}`)
                 .then(response => {
-                    console.log( response.data.response.data.length )
-                    // if(response.status == 200){
-                        if( response.data.response.data.length > 0 ){
-                            this.products = response.data.response.data
+                    console.log( response.data.data.length )
+                    
+                        if( response.data.data.length > 0 ){
+                            this.products = response.data.data
                         }else{
                             this.getProducts();
                         }
@@ -106,8 +106,8 @@
              getProducts(){
                axios.get('/api/product/myproducts')
                .then(response => {
-                    console.log(response.data.response.products)
-                   this.products = response.data.response.products
+                    console.log(response.data.data)
+                   this.products = response.data.data
                })
                .catch(error => {
                    console.log(error)

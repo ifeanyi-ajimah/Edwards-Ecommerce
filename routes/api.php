@@ -25,6 +25,14 @@ Route::group([ 'middleware' => 'auth:api', 'prefix' => '/user'], function ($rout
   
 });
 
+Route::group([ 'middleware' => 'auth:api', 'prefix' => '/order'], function ($router) {
+    Route::post('/store', 'api\OrderController@store');
+    Route::get('/vendor-orders', 'api\OrderController@vendorOrders');
+    Route::get('/customer-orders', 'api\OrderController@customerOrders');
+    Route::get('/all-orders', 'api\OrderController@allOrders');
+  
+});
+
 
 
 Route::get('/products','api\ProductController@index');
