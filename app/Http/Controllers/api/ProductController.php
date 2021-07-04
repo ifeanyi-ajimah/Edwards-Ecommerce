@@ -36,7 +36,11 @@ class ProductController extends Controller
     {
          $searched = Product::where('name', 'like', '%'. $item  . '%' )->get();
          return ProductResource::collection( $searched );
-
+    }
+    public function searchNameSequence($item)
+    {
+         $searched = Product::where('name', 'like', '%'. $item  . '%' )->get();
+         return ProductResource::collection( $searched );
     }
 
     public function searchMyProducts($item)
@@ -59,7 +63,7 @@ class ProductController extends Controller
             'name' => 'required|string|unique:products',
             'description' => 'required|string',
             'price' => 'required|integer',
-            'image'=>'nullable|mimes:png,jpeg,jpg|max:10000',
+            'image'=>'required|mimes:png,jpeg,jpg|max:10000',
         ]);
 
         $product = new product;

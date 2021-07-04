@@ -59,9 +59,8 @@
     export default {
         data(){
            return{
-             attachment : '',
-             
-             form : new FormData,
+            form : new FormData,
+            attachment : '',
             inputdata:{
                 name : '',
                 description : ' ',
@@ -76,7 +75,6 @@
                 let selectedFile = e.target.files[0];
                 this.attachment = selectedFile
             }, 
-            
             submitForm(){
                  this.form.append('image', this.attachment);
                  this.form.append('name', this.inputdata.name)
@@ -100,7 +98,6 @@
             },
 
         },
-
         mounted() {
             
         }

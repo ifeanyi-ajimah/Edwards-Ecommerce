@@ -1968,8 +1968,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      attachment: '',
       form: new FormData(),
+      attachment: '',
       inputdata: {
         name: '',
         description: ' ',
@@ -2460,7 +2460,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       products: {},
       pageOfItems: [],
-      searchquery: ''
+      searchquery: '',
+      temp: []
     };
   },
   computed: {},
@@ -2489,21 +2490,20 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/api/product/search/".concat(value)).then(function (response) {
-        console.log(response.data.data.length);
-
         if (response.data.data.length > 0) {
-          _this2.products = response.data.data;
+          _this2.temp = response.data.data;
         } else {
-          _this2.getProducts();
+          _this2.temp = [];
         }
-      })["catch"](function (error) {});
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     getProducts: function getProducts() {
       var _this3 = this;
 
       axios.get('/api/product/products').then(function (response) {
-        // console.log(response.data.data)
-        _this3.products = response.data.data;
+        _this3.products = _this3.temp = response.data.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3265,7 +3265,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       products: {},
       pageOfItems: [],
-      searchquery: ''
+      searchquery: '',
+      temp: []
     };
   },
   computed: {},
@@ -3290,25 +3291,38 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
+    // searchQuery1(value){
+    //     axios.get(`/api/product/myproducts/search/${value}`)
+    //     .then(response => {
+    //         console.log( response.data.data.length )
+    //             if( response.data.data.length > 0 ){
+    //                 this.products = response.data.data
+    //             }else{
+    //                 this.getProducts();
+    //             }
+    //     })
+    //     .catch(error =>{
+    //     })
+    //  },
     searchQuery1: function searchQuery1(value) {
       var _this2 = this;
 
       axios.get("/api/product/myproducts/search/".concat(value)).then(function (response) {
-        console.log(response.data.data.length);
-
         if (response.data.data.length > 0) {
-          _this2.products = response.data.data;
+          _this2.temp = response.data.data;
         } else {
-          _this2.getProducts();
+          _this2.temp = [];
         }
-      })["catch"](function (error) {});
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     getProducts: function getProducts() {
       var _this3 = this;
 
       axios.get('/api/product/myproducts').then(function (response) {
         console.log(response.data.data);
-        _this3.products = response.data.data;
+        _this3.products = _this3.temp = response.data.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -41649,7 +41663,7 @@ var render = function() {
                 { staticClass: "card-footer pb-0 pt-3" },
                 [
                   _c("jw-pagination", {
-                    attrs: { pageSize: 5, items: _vm.products },
+                    attrs: { pageSize: 5, items: _vm.temp },
                     on: { changePage: _vm.onChangePage }
                   })
                 ],
@@ -43269,7 +43283,7 @@ var render = function() {
                 { staticClass: "card-footer pb-0 pt-3" },
                 [
                   _c("jw-pagination", {
-                    attrs: { pageSize: 5, items: _vm.products },
+                    attrs: { pageSize: 5, items: _vm.temp },
                     on: { changePage: _vm.onChangePage }
                   })
                 ],

@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="card-footer pb-0 pt-3">
-                                <jw-pagination :pageSize=5 :items="products" @changePage="onChangePage"></jw-pagination>
+                                <jw-pagination :pageSize=5 :items="temp" @changePage="onChangePage"></jw-pagination>
                             </div>
                         </div>
                     </div>
@@ -58,6 +58,7 @@
               products:{},
               pageOfItems: [],
               searchquery: '',
+              temp:[]
            }
 
         },
@@ -87,19 +88,34 @@
                 }
 
             },
-            searchQuery1(value){
+            // searchQuery1(value){
+            //     axios.get(`/api/product/myproducts/search/${value}`)
+            //     .then(response => {
+            //         console.log( response.data.data.length )
+                    
+            //             if( response.data.data.length > 0 ){
+            //                 this.products = response.data.data
+            //             }else{
+            //                 this.getProducts();
+            //             }
+            //     })
+            //     .catch(error =>{
+
+            //     })
+            //  },
+
+              searchQuery1(value){
+
                 axios.get(`/api/product/myproducts/search/${value}`)
                 .then(response => {
-                    console.log( response.data.data.length )
-                    
                         if( response.data.data.length > 0 ){
-                            this.products = response.data.data
+                           this.temp = response.data.data
                         }else{
-                            this.getProducts();
+                            this.temp = []
                         }
                 })
                 .catch(error =>{
-
+                    console.log(error)
                 })
              },
 
@@ -107,7 +123,7 @@
                axios.get('/api/product/myproducts')
                .then(response => {
                     console.log(response.data.data)
-                   this.products = response.data.data
+                   this.products = this.temp = response.data.data
                })
                .catch(error => {
                    console.log(error)
