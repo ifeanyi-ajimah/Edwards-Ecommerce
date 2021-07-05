@@ -137,6 +137,7 @@
                      this.searchQuery1(this.searchquery);
                 }else{
                     this.getProducts();
+                    // this.temp = this.products 
                 }
             }, 
         },

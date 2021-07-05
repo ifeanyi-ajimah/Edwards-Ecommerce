@@ -3333,7 +3333,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.searchquery.length > 0) {
         this.searchQuery1(this.searchquery);
       } else {
-        this.getProducts();
+        this.getProducts(); // this.temp = this.products 
       }
     }
   },
